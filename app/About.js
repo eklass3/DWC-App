@@ -5,7 +5,7 @@ import { createDrawerNavigator, DrawerToggleButton } from '@react-navigation/dra
 export default function About() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <DrawerToggleButton tintColor="white" />
+      
     </View>
   );
 }
