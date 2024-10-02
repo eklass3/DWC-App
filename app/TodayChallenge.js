@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity, Linking } from 'react-native';
 
 export default function TodayChallenge() {
   const [challenge, setChallenge] = useState({
@@ -57,7 +57,7 @@ function calculateHeight(originalWidth, originalHeight, newWidth) {
     <View style={{flex: 1, backgroundColor: '#ffffff'}}>
       <View style={{ flex: 1, marginTop: 70}}>
         <Text
-          style={{fontFamily: 'LinuxLibertine', fontSize: 26, marginLeft: 15, marginRight: 15}}
+          style={{fontFamily: 'LinuxLibertine', fontSize: 30, marginLeft: 15, marginRight: 15}}
         >Daily Wiki Challenge
         </Text>
         <View style={{width: '100%', alignItems: 'center'}}>
@@ -70,14 +70,15 @@ function calculateHeight(originalWidth, originalHeight, newWidth) {
         <View style={{width: '100%', alignItems: 'center'}}>
           <View style={{width: '100%', height: 1, backgroundColor: '#BdBdBd'}}/>
         </View>
-        <ScrollView contentContainerStyle={{ flexGrow: 1,  marginLeft: 15, marginRight: 15}}> 
+        <ScrollView contentContainerStyle={{ flexGrow: 1}}> 
+          <View style={{marginLeft: 15, marginRight: 15}}>
         <View style={{width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', height: 50, marginTop: 15, backgroundColor: '#F8F9FA'}}>
             <Text style={{fontWeight: 'bold', fontSize: 16}}>Hints</Text>
         </View>
         <Text style={{marginTop: 15, fontSize: 16, lineHeight: 25, fontFamily:'Arial'}}>
             {challenge.question}
         </Text>
-        <View style={{marginTop: 50, flexDirection: 'row', justifyContent: "center"}}>
+        <View style={{marginTop: 50, flexDirection: 'column', alignItems: "center"}}>
           <Image 
             source={{ uri: challenge.img_src }} // Use the source prop with a URI object
             style={{
@@ -86,6 +87,15 @@ function calculateHeight(originalWidth, originalHeight, newWidth) {
             }}
             resizeMode="contain" // Optional: adjust the resize mode as needed
           />
+          <View style={{width: '100%', backgroundColor: 'grey', height: 50, borderRadius: 10, marginTop: 15}}></View>
+        </View>
+        </View>
+        <View style={{width: '100%', backgroundColor: '#F8F9FA', justifyContent: 'center', height: 100, marginTop: 50}}>
+          <Text style={{marginLeft: 15, marginRight: 15, fontSize: 12, color: '#828282'}}>Content is available under 
+          <TouchableOpacity style={{marginTop: -3}} onPress={() => Linking.openURL('https://creativecommons.org/licenses/by-sa/4.0/deed.en')}>
+          <Text style={{ color: '#2F80ED', textDecorationLine: 'none', fontSize: 12 }}> CC BY-SA 4.0 </Text>
+        </TouchableOpacity>
+        unless otherwise noted.</Text>
         </View>
         </ScrollView>
       </View>
